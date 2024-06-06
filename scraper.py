@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # URL of the page to scrape
-url = "https://odyportal.cc-courts.org/Portal/Home/Dashboard/29"
+url = "https://ci.richmond.ca.us/186/Forms-and-Resources"
 
 # Request the page
 response = requests.get(url)
@@ -14,9 +14,12 @@ if response.status_code == 200:
 
     # Find all links (or specific elements) to the files
     file_links = soup.find_all('a', href=True)
+    print(file_links)
 
     for link in file_links:
         file_url = link['href']
+        print(link)
+        # print(file_url)
         if "pdf" in file_url:  # Adjust the condition based on the file type
             print(file_url)
 
